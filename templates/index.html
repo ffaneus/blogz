@@ -1,0 +1,38 @@
+{% extends "layout/base.html" %}
+
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                {% if posts %}
+                    {% for post in posts %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <a href="/post/{{post.id}}" class="btn btn-primary">Read more</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1>We are working on it</h1>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if user_list %}
+                <ul class="list-group">
+                    {% for user in user_list %}
+                        <li class="list-group-item">
+                            {{ user.username }}:{{ user.password }}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock  %}
